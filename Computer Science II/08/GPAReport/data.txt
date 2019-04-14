@@ -1,0 +1,36 @@
+John Johnson
+2
+Computer Science I
+4
+A
+Introduction to Art
+3
+B-
+Paul Paulson
+3
+Computer Science I
+4
+C-
+Intro to Politics
+3
+B
+Calculus I
+4
+B
+George Johnson
+5
+Computer Science I
+4
+C-
+Computer Science II
+4
+B+
+Computer Science III
+4
+A+
+Intro to Politics
+3
+B
+Calculus I
+4
+B

@@ -1,0 +1,15 @@
+Name                Courses                  Credit Hours   Grade
+-----------------------------------------------------------------
+John Johnson        Computer Science I       4              A    
+                    Introduction to Art      3              B-   
+GPA:  3.44
+Paul Paulson        Computer Science I       4              C-   
+                    Intro to Politics        3              B    
+                    Calculus I               4              B    
+GPA:  2.53
+George Johnson      Computer Science I       4              C-   
+                    Computer Science II      4              B+   
+                    Computer Science III     4              A+   
+                    Intro to Politics        3              B    
+                    Calculus I               4              B    
+GPA:  3.00
