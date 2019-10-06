@@ -1,0 +1,25 @@
+Enter a command [ex: a < R]: a < R
+Starting node: a
+a has an outgoing node -- following to: S
+S has no outgoing nodes -- returning to: a
+Path starting at a contains no cycles. Next Node...
+
+Starting node: R
+R has an outgoing node -- following to: a
+a has an outgoing node -- following to: S
+S has no outgoing nodes -- returning to: a
+a has no outgoing nodes -- returning to: R
+Path starting at R contains no cycles. Next Node...
+
+Enter a command [ex: a < R]: d > S
+Starting node: d
+d has an outgoing node -- following to: T
+T has an outgoing node -- following to: e
+e has an outgoing node -- following to: V
+V has an outgoing node -- following to: g
+g has an outgoing node -- following to: U
+U has an outgoing node -- following to: d
+	 ***List already contains node d
+	 ***Deadlock Detected! Node List L = [d, T, e, V, g, U, d]
+Starting node: S
+Path starting at S contains no cycles. Next Node...

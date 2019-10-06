@@ -1,0 +1,4 @@
+gcc -o accumulator_seq accumulator_seq.c
+gcc -o accumulator_two_forks_shm accumulator_two_forks_shm.c
+gcc -o accumulator_four_forks_shm accumulator_four_forks_shm.c
+

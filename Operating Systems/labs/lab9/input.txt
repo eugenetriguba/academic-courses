@@ -1,0 +1,19 @@
+a > S
+a < R
+
+c > S
+
+f > S
+f < W
+
+d > S
+d > T
+d < U
+
+b > T
+
+e < T
+e > V
+
+g < V
+g > U

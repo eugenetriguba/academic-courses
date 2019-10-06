@@ -1,0 +1,2 @@
+I use a Mac and the terminal so I didn’t have to do anything to get set up. I also messed around a bit with C before, nothing too in-depth, but I do therefore have a GCC compiler installed too. My environment functions quite well as far as I know. I will not be needing assistance at this time. So it appears I am all good to go.
+

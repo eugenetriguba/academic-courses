@@ -1,0 +1,27 @@
+Summary: 
+	 Sum: 1249975000
+	 Average: 24999
+Process ID = 0 (inside first forked() process)
+Process ID = 0 (inside second forked() process)
+Process ID of first process  = 1119
+Process ID of second process = 1120
+Processing Summary:
+   First process sum:   312487500
+   Second process sum:  937487500
+   Total sum:           1249975000
+   Average:             24999
+Process ID = 0 (inside first forked() process)
+Process ID = 0 (inside second forked() process)
+Process ID = 0 (inside third forked() process)
+Process ID = 0 (inside fourth forked() process)
+Process ID of first process  = 1122
+Process ID of second process = 1123
+Process ID of third process  = 1124
+Process ID of fourth process = 1125
+Processing Summary:
+   First process sum:   78118750
+   Second process sum:  234368750
+   Third process sum:   390618750
+   Fourth process sum:  546868750
+   Total sum:           1249975000
+   Average:             24999

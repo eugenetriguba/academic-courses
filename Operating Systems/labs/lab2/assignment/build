@@ -1,0 +1,1 @@
+gcc main.c addTwoArrays.c printArr.c -o lab2 -Wall

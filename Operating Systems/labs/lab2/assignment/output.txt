@@ -1,0 +1,15 @@
+Enter 5 numbers to fill Array 1
+Enter element 1: 5
+Enter element 2: 10
+Enter element 3: 20
+Enter element 4: 55
+Enter element 5: 12
+Enter 5 numbers to fill Array 2
+Enter element 1: 0
+Enter element 2: 124
+Enter element 3: 12
+Enter element 4: 15
+Enter element 5: 5
+First Array: [5, 10, 20, 55, 12]
+Second Array: [0, 124, 12, 15, 5]
+Result: [5, 134, 32, 70, 17]

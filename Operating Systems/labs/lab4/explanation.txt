@@ -1,0 +1,14 @@
+I'd say the results for me were a bit confusing because of the similarity. 
+I expected num3fork to be significantly slower than the two threaded 
+programs. I assumed this because the threads are much more light-weight
+so creating them is less expensive, and I didn't think an entirely new
+process for this program was necessary. I would say trial three went more
+like I would have guessed in that num3fork was about 20 seconds slower 
+for the first couple processes. However, the results of all three were
+fairly similar. Maybe a larger time period could of produced larger 
+discrepancies.
+
+The computer used for this assignment was a Windows PC running Windows
+subsystem for Linux. The link for the processor it had: 
+
+https://ark.intel.com/content/www/us/en/ark/products/122589/intel-core-i7-8550u-processor-8m-cache-up-to-4-00-ghz.html

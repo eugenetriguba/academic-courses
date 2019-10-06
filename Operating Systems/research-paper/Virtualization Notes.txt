@@ -1,0 +1,38 @@
+The problem: You may have different servers you want to run, such as a Web server, email server, some e-commence servers, etc. You may have all these servers run on separate machines for various reasons: performance, reliability, and security. 
+
+Performance: One machine may not be able to handle all of the load.
+
+Reliability: It may not be trusted to have that machine running 24 hours a day, 365 days a year, without any failures.
+
+Security: If your email server is compromised, the attacker doesn’t also then get access to your web server (sandboxing).
+
+However, running these all on separate machines is quite expensive. Additionally, each server may have different operating system requirements. You could put them all on one computer with partitioned drives, but this is tricky to do.
+
+Possible solution: Virtual Machines
+ - A VMM (virtual machine monitor) creates the illusion of multiple machines on the same physical hardware. VMMs are also known as hypervisors.
+ - Two types of hypervisors: type 1 and type 2.
+ - However now if the server goes down, all the virtual machines do as well. The reason this isn’t typically as much of an issue is that bugs that bring down the system are often software-related, not hardware. Also, a hypervisor has orders of magnitude less code than a regular operating system.
+ - Running fewer physical machines saves money on hardware and electricity.
+ - The environment (specific OS version, libraries, configuration files, etc.) is contained in the VM (rather than having to set all those things up each time).
+ - Checkpointing and migrating virtual machines (load balancing?) is significantly easier than migrating processes running on a normal OS.
+ - A typical use case is using VMs to run legacy applications (such as for operating systems no longer supported or that don’t work on current hardware)
+ - Allows you to test your application on various operating systems for development (rather than setting up multiple machine with various operating systems)
+ - One of the most important use cases is the cloud (computation and storage outsourced to a data center).
+
+Hypervisors on various platforms: VMware, Xen, KVM, VirtualBox, Hyper-V, Parallels, etc.
+
+Requirements for Virtualization
+
+Benefits of Virtualization:
+ - Sandboxing
+ - Isolation and fault tolerance
+ - Cheaper and easier to manage than having many machines
+ - Allows the ability to more easily run different operating systems for different uses on the same machine
+ - Bugs that bring down the system are often software-related, not hardware. A hypervisor has orders of magnitude less code than a regular operating system.
+
+
+
+Goldberg’s 1974 Paper:
+ - Efficient, isolated duplicate of the real machine.
+ - Three Essential Characteristics
+     - 

@@ -1,0 +1,50 @@
+lab6 > gcc copyfile.c -o copyfile
+lab6 > ./copyfile ascii.txt ascciCopy.txt
+lab6 > ./copyfile binary.bin binaryCopy.bin
+lab6 > more binary.bin
+100011101010101010101
+101010101011110101
+1010101101010101010
+lab6 > more binaryCopy.bin
+100011101010101010101
+101010101011110101
+1010101101010101010
+lab6 > more ascii.txt
+This is an ascii file to be copied.
+
+Here's more text to copy.
+lab6 > more asciiCopy.txt 
+This is an ascii file to be copied.
+
+Here's more text to copy.
+lab6 > diff ascii.txt asciiCopy.txt 
+lab6 > od binary.bin
+0000000    030061  030060  030461  030061  030061  030061  030061  030061
+0000020    030061  030061  005061  030061  030061  030061  030061  030061
+0000040    030461  030461  030460  030460  030412  030460  030460  030460
+0000060    030061  030061  030061  030061  030061  030061  000012        
+0000075
+lab6 > od binaryCopy.bin
+0000000    030061  030060  030461  030061  030061  030061  030061  030061
+0000020    030061  030061  005061  030061  030061  030061  030061  030061
+0000040    030461  030461  030460  030460  030412  030460  030460  030460
+0000060    030061  030061  030061  030061  030061  030061  000012        
+0000075
+lab6 > ls -al
+total 104
+drwxr-xr-x  14 eugene  staff   448 Mar 18 13:35 .
+drwxr-xr-x   9 eugene  staff   288 Mar 17 14:20 ..
+-rw-r--r--@  1 eugene  staff  6148 Mar 17 15:14 .DS_Store
+drwxr-xr-x   7 eugene  staff   224 Mar 17 15:14 .idea
+-rw-r--r--   1 eugene  staff   111 Mar 17 14:40 CMakeLists.txt
+-rw-r--r--@  1 eugene  staff    62 Mar 17 14:37 ascii.txt
+-rwx------   1 eugene  staff    62 Mar 17 14:38 asciiCopy.txt
+-rw-r--r--   1 eugene  staff    61 Mar 17 14:38 binary.bin
+-rwx------   1 eugene  staff    61 Mar 17 14:39 binaryCopy.bin
+drwxr-xr-x   7 eugene  staff   224 Mar 17 14:40 cmake-build-debug
+-rwxr-xr-x   1 eugene  staff  8648 Mar 17 14:38 copyfile
+-rw-r--r--@  1 eugene  staff  1412 Mar 17 14:51 copyfile.c
+-rw-r--r--@  1 eugene  staff  1166 Mar 17 14:56 results.txt
+-rw-r--r--@  1 eugene  staff   810 Mar 17 15:10 summary.md
+lab6 >
+
