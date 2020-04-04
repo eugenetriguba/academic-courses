@@ -1,0 +1,70 @@
+------------------- Evaluating SGDClassifier -------------------
+Mean scores from cross validation using SGDClassifier: 0.70
+Confusion matrix using SGDClassifier: 
+[[436 113]
+ [145 197]]
+Precision score using SGDClassifier: 0.64
+Recall score using SGDClassifier: 0.58
+Accuracy score using SGDClassifier: 0.71
+ROC AUC score using SGDClassifier: 0.69
+
+------------------- Evaluating RandomForestClassifier -------------------
+Mean scores from cross validation using RandomForestClassifier: 0.80
+Confusion matrix using RandomForestClassifier: 
+[[476  73]
+ [ 93 249]]
+Precision score using RandomForestClassifier: 0.77
+Recall score using RandomForestClassifier: 0.73
+Accuracy score using RandomForestClassifier: 0.81
+ROC AUC score using RandomForestClassifier: 0.80
+
+------------------- Evaluating Perceptron -------------------
+Mean scores from cross validation using Perceptron: 0.56
+Confusion matrix using Perceptron: 
+[[458  91]
+ [172 170]]
+Precision score using Perceptron: 0.65
+Recall score using Perceptron: 0.50
+Accuracy score using Perceptron: 0.70
+ROC AUC score using Perceptron: 0.67
+
+------------------- Evaluating DecisionTreeClassifier -------------------
+Mean scores from cross validation using DecisionTreeClassifier: 0.79
+Confusion matrix using DecisionTreeClassifier: 
+[[467  82]
+ [ 99 243]]
+Precision score using DecisionTreeClassifier: 0.75
+Recall score using DecisionTreeClassifier: 0.71
+Accuracy score using DecisionTreeClassifier: 0.80
+ROC AUC score using DecisionTreeClassifier: 0.78
+
+------------------- Evaluating GaussianNB -------------------
+Mean scores from cross validation using GaussianNB: 0.79
+Confusion matrix using GaussianNB: 
+[[440 109]
+ [ 84 258]]
+Precision score using GaussianNB: 0.70
+Recall score using GaussianNB: 0.75
+Accuracy score using GaussianNB: 0.78
+ROC AUC score using GaussianNB: 0.78
+
+------------------- Evaluating SVC -------------------
+Mean scores from cross validation using SVC: 0.70
+Confusion matrix using SVC: 
+[[471  78]
+ [195 147]]
+Precision score using SVC: 0.65
+Recall score using SVC: 0.43
+Accuracy score using SVC: 0.69
+ROC AUC score using SVC: 0.64
+
+------------------- Evaluating KNeighborsClassifier -------------------
+Mean scores from cross validation using KNeighborsClassifier: 0.70
+Confusion matrix using KNeighborsClassifier: 
+[[428 121]
+ [159 183]]
+Precision score using KNeighborsClassifier: 0.60
+Recall score using KNeighborsClassifier: 0.54
+Accuracy score using KNeighborsClassifier: 0.69
+ROC AUC score using KNeighborsClassifier: 0.66
+
