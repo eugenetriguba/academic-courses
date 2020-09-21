@@ -35,10 +35,22 @@ int main()
     vector<string> names;
     vector<double> ages;
 
-    do {
+    cout << "Enter '|' and enter to quit entering names." << endl;
+    while (true) {
         cout << "Enter name #" << names.size() + 1 << ": ";
-        names.push_back(read_token<string>(cin));
-    } while (names.size() != 5);
+        string token = read_token<string>(cin);
+
+        if (token.compare("|") == 0) {
+            if (names.size() < 1) {
+                cout << "error: must enter at least one item." << endl;
+                continue;
+            }
+
+            break;
+        }
+
+        names.push_back(token);
+    }
 
     do {
         cout << "Enter age for " << names[ages.size()] << ": ";
