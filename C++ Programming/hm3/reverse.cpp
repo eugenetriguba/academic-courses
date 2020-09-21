@@ -13,6 +13,26 @@
 
 using namespace std;
 
+template <typename T> vector<T> reverse_by_value(vector<T> vec);
+template <typename T> void reverse_by_ref(vector<T> &vec);
+template <class Container> void print_container(Container &cont);
+
+int main()
+{
+    vector<int> values{1, 3, 5, 7, 9};
+
+    reverse_by_ref(values);
+    cout << "Pass by reference: ";
+    print_container(values);
+
+    values = {1, 3, 5, 7, 9};
+    vector<int> reversed_values = reverse_by_value(values);
+    cout << "Pass by value: ";
+    print_container(reversed_values);
+
+    return 0;
+}
+
 // Reverse the elements of a vector by passing by value.
 // i.e. returning a new vector
 //
@@ -50,20 +70,4 @@ template <class Container> void print_container(Container &cont)
     }
 
     cout << endl;
-}
-
-int main()
-{
-    vector<int> values{1, 3, 5, 7, 9};
-
-    reverse_by_ref(values);
-    printf("Pass by reference: ");
-    print_container(values);
-
-    values = {1, 3, 5, 7, 9};
-    vector<int> reversed_values = reverse_by_value(values);
-    printf("Pass by value: ");
-    print_container(reversed_values);
-
-    return 0;
 }
