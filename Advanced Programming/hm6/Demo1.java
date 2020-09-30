@@ -1,5 +1,6 @@
 // Eugene Triguba <ytriguba17@ole.augie.edu>
 // Advanced Programming: Homework 6
+// 38-2 Streams
 
 import java.util.Scanner;
 import java.util.Arrays;
@@ -7,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 // Prints all employees of a particular department.
-public class Demo
+public class Demo1
 {
     public static void main(String[] args)
     {

@@ -1,5 +1,6 @@
 // Eugene Triguba <ytriguba17@ole.augie.edu>
-// Advanced Programming: Homework 7
+// Advanced Programming: Homework 6
+// 38-3 Functional Interfaces
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -7,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Demo
+public class Demo2
 {
     public static void main(String[] args)
     {
@@ -29,6 +30,7 @@ public class Demo
         );
         employeesByDepartment.forEach((department, employeesInDepartment) -> {
             System.out.printf("\n%s\n", department);
+            
             employeesInDepartment.stream().sorted(
                 Comparator.comparing(Employee::getSalary)
             ).forEach(employee -> {
