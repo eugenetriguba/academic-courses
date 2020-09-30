@@ -1,0 +1,8 @@
+# Executables
+/main
+
+# Editor
+/.vscode
+
+# Program output
+mydata.txt
