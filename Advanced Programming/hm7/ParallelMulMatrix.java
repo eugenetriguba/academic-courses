@@ -12,8 +12,12 @@ import java.util.concurrent.TimeUnit;
 
 public class ParallelMulMatrix {
 
-    // Multiplies 2 square matrices.
-    // The dimension of the matrices is entered in by the user.
+    /**
+     * Multiplies two square matrices with the dimensions provided
+     * by the user. The number of logical threads on the given machine
+     * is found and that number is used to split up the task in that
+     * many parts to run in parallel.
+     */
     public static void main(String[] args) throws InterruptedException {
         System.out.print("Enter dimension of square matrix: ");
         int dimension = readInt(System.in);
@@ -24,7 +28,7 @@ public class ParallelMulMatrix {
         int[][] m2 = generateMatrix(dimension, rand);
 
         int logicalThreads = Runtime.getRuntime().availableProcessors();
-        System.out.println("Found " + logicalThreads + " logical threads on your machine.");
+        System.out.printf("Found %d logical threads on your machine.\n", logicalThreads);
 
         if (logicalThreads > dimension) {
             System.out.printf("Only %d requested as the dimension so only %d threads will be used\n\n", dimension,
@@ -65,7 +69,15 @@ public class ParallelMulMatrix {
         }
     }
 
-    // Retrieve the next int from `in`
+    /**
+     * Retrieves the next int from a stream.
+     *
+     * Args:
+     *   in: The stream to read an integer from.
+     *
+     * Returns:
+     *   The next int from that stream.
+     */
     private static int readInt(InputStream in) {
         Scanner input = new Scanner(in);
         int result = input.nextInt();
@@ -74,22 +86,49 @@ public class ParallelMulMatrix {
         return result;
     }
 
+    /**
+     * Generate the values for a square matrix.
+     *
+     * Args:
+     *   dimension: The dimension of the square matrix.
+     *   rand: The random number generator.
+     *
+     * Returns:
+     *   A new matrix with it's values set between [0-10)
+     */
     private static int[][] generateMatrix(int dimension, Random rand) {
         int[][] result = new int[dimension][dimension];
 
-        for (int i = 0; i < result.length; ++i)
-            for (int j = 0; j < result[i].length; ++j)
-                result[i][j] = rand.nextInt(10);
+        for (int row = 0; row < result.length; row++) {
+            for (int col = 0; col < result[row].length; col++) {
+                result[row][col] = rand.nextInt(10);
+            }
+        }
 
         return result;
     }
 
+    /**
+     * Retrieves the matrix as a string.
+     *
+     * Args:
+     *   m: The matrix to stringify.
+     * 
+     * Returns:
+     *   The matrix stringified. i.e. If the matrix 
+     *   is a square matrix with dimensions 2, it 
+     *   would look like the following, with the 1 swapped
+     *   for the real numbers in m:
+     *
+     *     1    1
+     *     1    1
+     */
     private static String stringifyMatrix(int[][] m) {
         StringBuilder output = new StringBuilder();
 
-        for (int i = 0; i < m.length; ++i) {
-            for (int j = 0; j < m[i].length; ++j) {
-                output.append(String.format("%5d", m[i][j]));
+        for (int row = 0; row < m.length; row++) {
+            for (int col = 0; col < m[row].length; col++) {
+                output.append(String.format("%5d", m[row][col]));
             }
 
             output.append('\n');
@@ -101,19 +140,19 @@ public class ParallelMulMatrix {
 
 class Time {
 
-    // Retrieve the current time in the format "mm:ss"
+    /**
+     * Retrieves the current time in minutes and seconds.
+     * 
+     * Returns:
+     *   The current time in the format "mm:ss"
+     */
     public static String getCurrent() {
         Calendar now = Calendar.getInstance();
 
-        return String.format("%d:%02d", now.get(Calendar.MINUTE), now.get(Calendar.SECOND));
+        return String.format("%02d:%02d", now.get(Calendar.MINUTE), now.get(Calendar.SECOND));
     }
 }
 
-/**
- * MultiplyMatrixTask multiplies a slice of the rows, namely [startRow to
- * endRow), and writes the result of those calculations into the corresponding
- * rows in result.
- */
 class MultiplyMatrixTask implements Runnable {
     private int[][] result;
     private final int[][] firstMatrix;
@@ -129,6 +168,11 @@ class MultiplyMatrixTask implements Runnable {
         this.endRow = endRow;
     }
 
+    /**
+     * Multiplies a slice of the rows in firstMatrix and secondMatrix, 
+     * namely [startRow to endRow), and writes the result of those 
+     * calculations into the corresponding rows in result, the result matrix.
+     */
     public void run() {
         System.out.printf("Starting task for row(s) %s at %s\n", getRowSlice(), Time.getCurrent());
 
@@ -147,6 +191,13 @@ class MultiplyMatrixTask implements Runnable {
         System.out.printf("Ending task for row(s) %s at %s\n", getRowSlice(), Time.getCurrent());
     }
 
+    /**
+     * Retrieves the row slice range.
+     *
+     * Returns:
+     *   If our row slice is only over 1 row, that row.
+     *   Otherwise a range in the format [start-end]
+     */
     private String getRowSlice() {
         if (startRow == endRow - 1) {
             return Integer.toString(startRow);
