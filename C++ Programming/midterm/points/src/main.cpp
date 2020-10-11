@@ -11,15 +11,14 @@
  * Name: Eugene Triguba
  *
  * This program reads in a set of points in the format (x, y),
- * writes those same points out to a file named mydata.txt, pauses
- * the running execution thread for 10 seconds, and then reads
- * in the points from the file and checks that they are equivelent
- * to the originally entered points.
+ * writes those same points out to a file named mydata.txt, then
+ * reads in the points from the file and checks that they are
+ * equivelent to the originally entered points.
  *
  * Exit status of 1 is returned from the program if we have an io
  * failure while we are reading in points from cin or from the file.
  * However, any points in a bad format are simply not saved and if during
- * the intial point entering phase, asked to try again.
+ * the initial point entering phase, asked to try again.
  *
  * Exit status of 2 is returned from the program if we are unable to open
  * the mydata.txt file for writing.
@@ -42,11 +41,8 @@
 using namespace std;
 
 void write_to_stream(ostream &os, vector<Point> &v);
-void pause_current_thread(int seconds);
-string format_string_for_equivelence(const Point &p1, const Point &p2);
 
 const string DATA_FILE = "mydata.txt";
-const int SLEEP_TIME_IN_SECONDS = 10;
 enum exit_code { io_failure = 1, write_file_failure = 2, read_file_failture = 3 };
 
 int main()
@@ -91,10 +87,7 @@ int main()
         exit(exit_code::write_file_failure);
     }
 
-    cout << "\nPausing for " << SLEEP_TIME_IN_SECONDS << " seconds..." << endl;
-    pause_current_thread(SLEEP_TIME_IN_SECONDS);
-
-    vector<Point> processed_points;
+    vector<Point> points_from_file;
     ifstream infile(DATA_FILE);
     if (infile.is_open()) {
         while (!infile.eof()) {
@@ -114,7 +107,7 @@ int main()
                 continue;
             }
 
-            processed_points.push_back(p);
+            points_from_file.push_back(p);
         }
     }
     else {
@@ -122,16 +115,9 @@ int main()
         exit(exit_code::read_file_failture);
     }
 
-    cout << "\nTesting equivelence:" << endl;
+    cout << endl;
     for (int i = 0; i < original_points.size(); i++) {
-        if (processed_points.size() - 1 < i) {
-            cout << "More items in original_points than processed_points, cannot test "
-                    "further."
-                 << endl;
-            break;
-        }
-
-        cout << format_string_for_equivelence(original_points[i], processed_points[i])
+        cout << "original=" << original_points[i] << " file=" << points_from_file[i]
              << endl;
     }
 
@@ -150,38 +136,4 @@ void write_to_stream(ostream &os, vector<Point> &v)
     for (vector<Point>::iterator iter = v.begin(); iter != v.end(); iter++) {
         os << *iter << endl;
     }
-}
-
-/**
- * Pauses the current thread for a specified
- * number of seconds.
- *
- * Args:
- *   seconds - the number of to pause the current thread.
- */
-void pause_current_thread(int seconds)
-{
-    chrono::seconds sleep_time(seconds);
-    this_thread::sleep_for(sleep_time);
-}
-
-/**
- * Creates a string with two points
- * and whether or not they are the same.
- *
- * Args:
- *   original - The original points to compare.
- *   processed - The processed points to compare.
- *
- * Returns:
- *   original=(x, y) processed=(x, y) [SAME|DIFFER]
- */
-string format_string_for_equivelence(const Point &original, const Point &processed)
-{
-    ostringstream oss;
-    oss << "original=" << original << " processed=" << processed << " ";
-
-    original == processed ? oss << "SAME" : oss << "DIFFER";
-
-    return oss.str();
 }

@@ -1,4 +1,4 @@
-CC=g++ -std=c++11 -stdlib=libc++ -Wc++11-extensions
+CC=g++
 
 SRC_FILES=src/point.cpp
 SRC_ENTRY=src/main.cpp
