@@ -15,15 +15,10 @@
  * reads in the points from the file and checks that they are
  * equivelent to the originally entered points.
  *
- * Exit status of 1 is returned from the program if we have an io
- * failure while we are reading in points from cin or from the file.
- * However, any points in a bad format are simply not saved and if during
- * the initial point entering phase, asked to try again.
- *
- * Exit status of 2 is returned from the program if we are unable to open
+ * Exit status of 1 is returned from the program if we are unable to open
  * the mydata.txt file for writing.
  *
- * Exit status of 3 is returned from the program if we are unable to open
+ * Exit status of 2 is returned from the program if we are unable to open
  * the mydata.txt file for reading.
  */
 
@@ -62,7 +57,7 @@ void parse_point(const string &input, Point &p);
 bool remove_char(string &s, char c);
 
 const string DATA_FILE = "mydata.txt";
-enum exit_code { io_failure = 1, write_file_failure = 2, read_file_failture = 3 };
+enum exit_code { write_file_failure = 1, read_file_failture = 2 };
 
 int main()
 {
@@ -76,12 +71,6 @@ int main()
         if (cin.eof()) {
             cin.clear();
             break;
-        }
-
-        if (cin.bad()) {
-            cout << "Unexpected error occurred with i/o that is unrecoverable..exiting"
-                 << endl;
-            exit(exit_code::io_failure);
         }
 
         if (cin.fail()) {
@@ -112,13 +101,6 @@ int main()
         while (!infile.eof()) {
             Point p;
             infile >> p;
-
-            if (infile.bad()) {
-                cout << "Unexpected error occurred with i/o that is "
-                        "unrecoverable..exiting"
-                     << endl;
-                exit(exit_code::io_failure);
-            }
 
             if (infile.fail()) {
                 infile.clear();
