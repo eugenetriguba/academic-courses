@@ -4,10 +4,8 @@
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.Random;
 
 class Producer implements Runnable {
-    private final static Random rnd = new Random();
     private final Buffer buf;
 
     public Producer(Buffer b) {
@@ -17,7 +15,7 @@ class Producer implements Runnable {
     public void run() {
         for (int count = 1; count <= 10; count++) {
             try {
-                Thread.sleep(rnd.nextInt(3000));
+                Thread.sleep(500);
                 buf.set(count);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -27,7 +25,6 @@ class Producer implements Runnable {
 }
 
 class Consumer implements Runnable {
-    private final static Random rnd = new Random();
     private final Buffer buf;
 
     public Consumer(Buffer b) {
@@ -38,7 +35,7 @@ class Consumer implements Runnable {
         for (int count = 1; count <= 10; count++) {
             try {
 
-                Thread.sleep(rnd.nextInt(6000));
+                Thread.sleep(2000);
                 buf.get();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -54,7 +51,7 @@ interface Buffer {
 }
 
 public class CircularBuffer implements Buffer {
-    private final int[] buf = { -1, -1, -1, -1, -1 };
+    private final int[] buf = { -1, -1, -1, -1, -1, -1, -1, -1 };
     private int occupiedCells = 0;
     private int in = 0;
     private int out = 0;
