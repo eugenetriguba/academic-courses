@@ -1,7 +1,5 @@
-// Eugene Triguba
-// ytriguba17@ole.augie.edu
-// Homework 5: Part a
-// C++ Programming
+// Eugene Triguba <ytriguba17@ole.augie.edu>
+// C++ Programming Homework 5: Part a
 #include <iostream>
 
 #include "PPPGraphics/Simple_window.h"
@@ -14,21 +12,25 @@ int main()
 {
     Point top_left_corner{100, 100};
     Simple_window window{top_left_corner, 600, 400, "My window"};
+    window.wait_for_button();
 
     Axis xa{Axis::x, Point{20, 300}, 280, 10, "x axis"};
     window.attach(xa);
     window.set_label("Canvas #2");
+    window.wait_for_button();
 
     Axis ya{Axis::y, Point{20, 300}, 280, 10, "y axis"};
     ya.set_color(Color::dark_red);
     ya.label.set_color(Color::cyan);
     window.attach(ya);
     window.set_label("Canvas #3");
+    window.wait_for_button();
 
     Function sine{sin, 0, 100, Point{20, 150}, 1000, 50, 50};
     sine.set_color(Color::blue);
     window.attach(sine);
     window.set_label("Canvas #4");
+    window.wait_for_button();
 
     Polygon poly;
     poly.add(Point{300, 200});
@@ -38,10 +40,12 @@ int main()
     poly.set_style(Line_style::dash);
     window.attach(poly);
     window.set_label("Canvas #5");
+    window.wait_for_button();
 
     Rectangle r{Point{200, 200}, 100, 50};
     window.attach(r);
     window.set_label("Canvas #6");
+    window.wait_for_button();
 
     Closed_polyline poly_rect;
     poly_rect.add(Point{100, 50});
@@ -56,18 +60,22 @@ int main()
     poly_rect.set_style(Line_style(Line_style::dash, 2));
     poly_rect.set_fill_color(Color::green);
     window.set_label("Canvas #7");
+    window.wait_for_button();
 
     Text t{Point{150, 150}, "Hello, graphical world!"};
     window.attach(t);
     window.set_label("Canvas #8");
+    window.wait_for_button();
 
     t.set_font(Graph_lib::Font::times_bold);
     t.set_font_size(20);
     window.set_label("Canvas #9");
+    window.wait_for_button();
 
     Image ii{Point{300, 300}, "image.jpg"};
     window.attach(ii);
     window.set_label("Canvas #10");
+    window.wait_for_button();
 
     ii.move(100, 200);
     window.set_label("Canvas #11");
@@ -92,6 +100,5 @@ int main()
     window.attach(sizes);
     window.attach(cal);
     window.set_label("Canvas #12");
-
     window.wait_for_button();
 }
