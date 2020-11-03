@@ -2,12 +2,11 @@
 
 #include "PPPGraphics/GUI.h"
 #include "PPPGraphics/Simple_window.h"
-#include "PPPGraphics/Point.h"
 
 using namespace std;
 using namespace Graph_lib;
 
-struct Lines_window : Window {
+struct Lines_window : Graph_lib::Window {
     Lines_window(Point xy, int w, int h, const string &title);
   private:
     Open_polyline lines;
@@ -40,15 +39,13 @@ struct Lines_window : Window {
     static void cb_quit(Address, Address);
 };
 
-Lines_window::Lines_window(Point xy, int w, int h, const string &title) : 
-    Window{xy, w, h, title}, 
-    next_button { Point{x_max() - 150, 0}, 70, 20, "Next point", cb_next},
-    quit_button { Point{x_max() - 70, 0}, 70, 20, "Quit", cb_quit},
-    next_x{Point{x_max() - 310, 0}, 50, 20, "next x:"},
-    next_y{Point{x_max() - 210, 0}, 50, 20, "next y:"},
-    xy_out{Point{100, 0}, 100, 20, "current (x,y):"},
-    color_menu{Point{x_max() - 70,30},70,20,Menu::vertical,"color"},
-    menu_button{Point{x_max() - 80,30}, 80, 20, "color menu", cb_menu}
+Lines_window::Lines_window(Point xy, int w, int h, const string &title)
+    : Graph_lib::Window{xy, w, h, title}, next_button{Point{x_max() - 150, 0}, 70, 20, "Next point", cb_next},
+      quit_button{Point{x_max() - 70, 0}, 70, 20, "Quit", cb_quit},
+      next_x{Point{x_max() - 310, 0}, 50, 20, "next x:"},
+      next_y{Point{x_max() - 210, 0}, 50, 20, "next y:"}, xy_out{Point{100, 0}, 100, 20, "current (x,y):"},
+      color_menu{Point{x_max() - 70, 30}, 70, 20, Menu::vertical, "color"},
+      menu_button{Point{x_max() - 80, 30}, 80, 20, "color menu", cb_menu}
 {
     attach(next_button);
     attach(quit_button);
@@ -63,6 +60,36 @@ Lines_window::Lines_window(Point xy, int w, int h, const string &title) :
     color_menu.hide();
     attach(menu_button);
     attach(lines);
+}
+
+void Lines_window::cb_red(Address, Address pw)
+{
+    reference_to<Lines_window>(pw).red_pressed();
+}
+
+void Lines_window::cb_blue(Address, Address pw)
+{
+    reference_to<Lines_window>(pw).blue_pressed();
+}
+
+void Lines_window::cb_black(Address, Address pw)
+{
+    reference_to<Lines_window>(pw).black_pressed();
+}
+
+void Lines_window::cb_menu(Address, Address pw)
+{
+    reference_to<Lines_window>(pw).menu_pressed();
+}
+
+void Lines_window::cb_next(Address, Address pw)
+{
+    reference_to<Lines_window>(pw).next();
+}
+
+void Lines_window::cb_quit(Address, Address pw)
+{
+    reference_to<Lines_window>(pw).quit();
 }
 
 void Lines_window::quit()
@@ -86,16 +113,16 @@ void Lines_window::next()
 
 int main()
 {
-    // try {
+    try {
         Lines_window win{Point{100, 100}, 600, 400, "Triguba Hw6 Part 2"};
         return gui_main();
-    // }
-    // catch (exception &e) {
-    //     cerr << "exception: " << e.what() << '\n';
-    //     return 1;
-    // }
-    // catch (...) {
-    //     cerr << "Some exception\n";
-    //     return 2;
-    // }
+    }
+    catch (exception &e) {
+        cerr << "exception: " << e.what() << '\n';
+        return 1;
+    }
+    catch (...) {
+        cerr << "Some exception\n";
+        return 2;
+    }
 }

@@ -63,9 +63,7 @@ void Lines_window::next()
 int main()
 {
     try {
-
         Lines_window win{Point{100, 100}, 600, 400, "Triguba Hw6 Part 1"};
-
         return gui_main();
     }
     catch (exception &e) {
