@@ -1,3 +1,6 @@
+// Eugene Triguba <ytriguba17@ole.augie.edu>
+// C++ Programming Homework 6: Part 1
+
 #include <iostream>
 
 #include "PPPGraphics/GUI.h"
