@@ -1,0 +1,2 @@
+g++ -o twin testWin.cpp Window.cpp Graph.cpp GUI.cpp Simple_window.cpp -lfltk -lfltk_images
+
